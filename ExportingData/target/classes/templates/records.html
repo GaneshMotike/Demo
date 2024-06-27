@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+    <style>
+        @media print {
+            button {
+                display: none;
+            }
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Records</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Thymeleaf syntax to iterate over records -->
+            <tr th:each="record : ${records}">
+                <td th:text="${record.id}"></td>
+                <td th:text="${record.name}"></td>
+                <td th:text="${record.value}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="window.location.href='/records/export/pdf'">Export to PDF</button>
+    <button onclick="window.location.href='/records/export/excel'">Export to Excel</button>
+    <button onclick="window.location.href='/records/export/csv'">Export to CSV</button>
+    <button onclick="window.print()">Print</button>
+</body>
+</html>
